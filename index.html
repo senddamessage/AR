@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:#050505;
+ color:white;
+ font-family:Georgia,serif;
+ text-align:center;
+ overflow-x:hidden;
+}
+
+.page{
+ min-height:100vh;
+ padding:25px 16px;
+ display:none;
+ position:relative;
+}
+
+.page.active{display:block}
+
+h1{
+ color:#ff8eae;
+ font-size:32px;
+ margin-top:35px;
+}
+
+.card{
+ max-width:480px;
+ margin:25px auto;
+ padding:22px;
+ border:1px solid #a83e62;
+ border-radius:18px;
+ background:linear-gradient(145deg,#190b12,#080808);
+ box-shadow:0 0 25px #8b244455;
+}
+
+input{
+ padding:13px;
+ border-radius:10px;
+ border:1px solid #e77c9d;
+ background:#160c11;
+ color:white;
+ text-align:center;
+ font-size:18px;
+ width:85%;
+ margin:12px;
+}
+
+button{
+ background:#a72e55;
+ color:white;
+ border:0;
+ padding:12px 25px;
+ border-radius:25px;
+ font-size:17px;
+ margin:8px;
+ cursor:pointer;
+}
+
+img,video{
+ width:100%;
+ max-width:440px;
+ border-radius:15px;
+ margin:15px auto;
+ display:block;
+}
+
+.counter{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin-top:20px;
+}
+
+.time-box{
+ border:1px solid #d65d83;
+ border-radius:12px;
+ padding:15px 5px;
+ background:#160b11;
+ box-shadow:0 0 12px #a72e5533;
+}
+
+.time-box span{
+ display:block;
+ color:#ff9ab7;
+ font-size:25px;
+ font-weight:bold;
+}
+
+.time-box small{
+ display:block;
+ margin-top:7px;
+ color:#fff;
+ font-size:12px;
+ letter-spacing:1px;
+}
+
+p{
+ line-height:2;
+ font-size:18px;
+}
+
+#letter{
+ white-space:pre-line;
+ text-align:right;
+ direction:rtl;
+}
+
+.heart{
+ position:fixed;
+ bottom:-30px;
+ color:#e94472;
+ animation:fly 8s linear infinite;
+ pointer-events:none;
+}
+
+@keyframes fly{
+ to{
+  transform:translateY(-110vh) rotate(360deg);
+  opacity:0;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<section id="lock" class="page active">
+ <div class="card" style="margin-top:18vh">
+  <img src="https://files.catbox.moe/eoau4i.jpeg" alt="Our picture">
+  <h1>I Love You ❤️</h1>
+  <p>Enter Our Password</p>
+  <input id="password" placeholder="Password">
+  <br>
+  <button onclick="unlock()">Open ❤️</button>
+  <p id="error"></p>
+ </div>
+</section>
+
+<!-- MAIN PAGE -->
+<section id="main" class="page">
+
+ <h1>I Love You All The Time ❤️</h1>
+
+ <div class="card">
+  <p>Our Time Together</p>
+
+  <div class="counter">
+
+   <div class="time-box">
+    <span id="years">0</span>
+    <small>YEARS</small>
+   </div>
+
+   <div class="time-box">
+    <span id="months">0</span>
+    <small>MONTHS</small>
+   </div>
+
+   <div class="time-box">
+    <span id="days">0</span>
+    <small>DAYS</small>
+   </div>
+
+   <div class="time-box">
+    <span id="hours">0</span>
+    <small>HOURS</small>
+   </div>
+
+   <div class="time-box">
+    <span id="minutes">0</span>
+    <small>MINUTES</small>
+   </div>
+
+   <div class="time-box">
+    <span id="seconds">0</span>
+    <small>SECONDS</small>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="card">
+  <video id="firstVideo" autoplay loop playsinline controls>
+   <source src="https://files.catbox.moe/pcau9d.mov" type="video/quicktime">
+  </video>
+
+  <p>من يوم ما اتقابلنا ونا ايامي حلوه بيك ♥️</p>
+ </div>
+
+ <!-- QUESTION -->
+ <div class="card">
+
+  <h2>سؤال واحد بس ❤️</h2>
+
+  <p>إيه مدى حبك ليا؟</p>
+
+  <button onclick="chooseAnswer('50%')">50%</button>
+  <button onclick="chooseAnswer('10%')">10%</button>
+  <button onclick="chooseAnswer('100%')">100%</button>
+  <button onclick="chooseAnswer('infinity')">♾️</button>
+
+  <p id="answer"></p>
+
+ </div>
+
+</section>
+
+<!-- FINAL PAGE -->
+<section id="final" class="page">
+
+ <h1>I Love You Forever ❤️</h1>
+
+ <div class="card">
+
+  <video id="lastVideo" controls playsinline>
+   <source src="https://files.catbox.moe/jxnuka.mp4" type="video/mp4">
+  </video>
+
+  <p>يديمك ليا حبيب وصاحب واخ وعمري كله 🫂❤️</p>
+
+  <p id="letter">أنا نفسي نفضل مع بعض على طول ي عبودي والله، ونفسي افضل العمر كله معاك ومنبعدش أبدا، بحمد ربنا كتير انك دخلت حياتي ، أنا اول مره احب كده ومبسوطه اوى ان حبيبي هو انت ، انا مش عاوزه حاجه من الدنيا دي غيركك ، جيت غيرتلى فكرتي عن الحب ، بقيت اشوف الحب فيكك وبحب الحب لانه معاك ، بحب كل تفصيله فيك وبحب وجودي معاك ، قد ما هقعد اقول بحبك مش هوصلك حبي برضو بجد ، انت عمرك ما تتخيل انا بحبك ازاى ، انا بحبك اوى والله وبتمني العمر كله تكون معايا فيه ي حبيب ايامي انت ، انا بحب وجودك وبحبك فوق ما تتخيل والله كلك عاجبني كدهو مش بشوف فيك غلطه بتمني نصيبي يتكتب معاك ونفضل جمب بعض طول العمر مفيش حاجه تحصل تفرقنا انا اتعودت ع وجودك واتعودت اني اصحا من النوم الاقيك وتكون اول صباح الصبح واخر تصبح ع خير بليل ياريت عرفتك من زمان ، بحب اليوم الى ربنا بعتك ليا فيهه ، بجد انا بحب اليوم الى عرفتك فيه اوي لانك احلى هديه ربنا بعتها ليا ❤️❤️❤️🫂</p>
+
+  <h2 style="color:#ff8eae">The End Love U 🥹❤️</h2>
+
+ </div>
+</section>
+
+<script>
+
+function show(id){
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
+ document.getElementById(id).classList.add('active');
+}
+
+function unlock(){
+
+ if(document.getElementById('password').value.trim()==='16/8'){
+
+  show('main');
+
+  const video=document.getElementById('firstVideo');
+
+  video.muted=false;
+  video.defaultMuted=false;
+  video.volume=1;
+
+  video.play().catch(()=>{
+   video.controls=true;
+  });
+
+ }else{
+
+  document.getElementById('error').textContent='Wrong Password 💔';
+
+ }
+
+}
+
+function chooseAnswer(answer){
+
+ const first=document.getElementById('firstVideo');
+
+ first.pause();
+
+ if(answer==='infinity'){
+
+  show('final');
+
+  const second=document.getElementById('lastVideo');
+
+  second.muted=false;
+  second.volume=1;
+  second.currentTime=0;
+
+  second.play().catch(()=>{
+   second.controls=true;
+  });
+
+ }else{
+
+  document.getElementById('answer').textContent=
+  'والله؟ طبب مفيش لينك بقا 😠';
+
+ }
+
+}
+
+function updateCounter(){
+
+ const start=new Date(2025,10,7);
+ const now=new Date();
+
+ let totalSeconds=Math.max(0,Math.floor((now-start)/1000));
+ let totalDays=Math.floor(totalSeconds/86400);
+
+ let years=Math.floor(totalDays/365.2425);
+ let months=Math.floor(totalDays/30.436875);
+
+ let hours=Math.floor(totalSeconds/3600);
+ let minutes=Math.floor(totalSeconds/60);
+ let seconds=totalSeconds;
+
+ document.getElementById('years').textContent=years;
+ document.getElementById('months').textContent=months;
+ document.getElementById('days').textContent=totalDays;
+ document.getElementById('hours').textContent=hours;
+ document.getElementById('minutes').textContent=minutes;
+ document.getElementById('seconds').textContent=seconds;
+
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+
+setInterval(()=>{
+
+ const h=document.createElement('div');
+
+ h.className='heart';
+ h.textContent='♥';
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(15+Math.random()*22)+'px';
+ h.style.animationDuration=(5+Math.random()*5)+'s';
+
+ document.body.appendChild(h);
+
+ setTimeout(()=>h.remove(),10000);
+
+},500);
+
+</script>
+
+</body>
+</html>
